@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    /* Заголовок сторінки */
+    .page-title {
+        color: #adf821;
+        font-size: 25px;
+        margin-bottom: 25px;
+    }
+
+    /* Назва категорії */
+    .category-title {
+        color: #ffc400;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* Заголовок статті */
+    .article-title h4 {
+        color: #b8ff47;
+        font-size: 21px;
+        margin-bottom: 5px;
+    }
+
+    /* Деталі статті */
+    .article-details {
+        color: #ffffff;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    /* Зображення статті */
+    .article-image img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    /* Вирівнювання блоків статей */
+    .articles-row {
+        margin-bottom: 30px;
+    }
+
+    /* Очистка флоатів */
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+<div class="container">
+    <h1 class="page-title">Публікації</h1>
+    {% if category %}
+    <div class="category-title">{{ category }}</div>
+    {% endif %}
+    {% for item in items %}
+    <div class="articles-row">
+        <div class="article-title">
+            <a href="{{ item.get_absolute_url }}">
+                <h4>{{ item.title }}</h4>
+            </a>
+        </div>
+        <div class="article-details">
+            <h5>{{ item.pub_date|date:"j E Y"|safe|linebreaks }}</h5>
+            <p>{{ item.description|safe|escape|striptags|truncatewords_html:30 }}</p>
+        </div>
+        <div class="article-image">
+            <img class="img" src="{{ item.images.all.0.image.url }}" alt=""/>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Публікації</title>
+</head>
+
+<body>
+    <h1>Публікації</h1>
+    
+    {% if category %}
+    <p>{{ category }}</p>
+    {% endif %}
+    
+    {% for item in items %}
+    <div class="articles-row">
+        <a href="{{ item.get_absolute_url }}">
+            <h4>{{ item.title }}</h4>
+        </a>
+        <h5>{{ item.pub_date|date:"j E Y"|safe|linebreaks }}</h5>
+        <p>{{ item.description|safe|escape|striptags|truncatewords_html:32 }}</p>
+        <div class="container-image">
+            <img class="img" src="{{ item.images.all.0.image.url }}" alt="" />
+        </div>
+        <div class='clearfix'></div>
+    </div>
+    {% endfor %}
+</body>
+
+</html> -->

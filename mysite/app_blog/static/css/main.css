@@ -16,7 +16,7 @@ div > h1,
 body > div > nav > div > a > h4,
 .article-block,
 .article-block a {
-    color: #fff;
+    color: #b47f0a;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -29,15 +29,15 @@ body > div > div > ol > li {
 }
 
 .article-block {
-    background: #fff;
-    color: #383838;
-    box-shadow: 2px 2px 1px hwb(0 100% 0%);
+    background: #f3d36c;
+    color: #222222;
+    box-shadow: 2px 2px 1px hwb(39 53% 17%);
     padding: 10px;
     margin: 10px;
 }
 
 div > h1 {
-    color: #0e838b;
+    color: #0f7506;
 }
 
 body > div > div > ol > li {

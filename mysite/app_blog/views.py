@@ -4,7 +4,9 @@ from django.views.generic import TemplateView
 
  # Створіть свої представлення тут.
 from django.views.generic import ListView, DetailView
+from .models import Category
 from .models import Article
+
 
 class HomePageView(ListView):
     model = Article
